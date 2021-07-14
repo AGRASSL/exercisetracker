@@ -28,16 +28,35 @@ router.post("/api/workouts", ({ body }, res) => {
        res.status(400).json(err);
      });
  });
-
- router.put("/api/workouts:id", ({ body }, res) => {
-   Workouts.update(body)
-   .then(dbWorkouts => {
-     res.json(dbWorkouts);
-   })
-   .catch(err => {
-     res.status(400).json(err);
-   });
- });
+ router.get("/api/workouts/rage", (req,res) => {
+  Workouts.find({}) 
+  .then(dbWorkouts => {
+    console.log(dbWorkouts)
+    res.json(dbWorkouts);
+  })
+  .catch(err => {
+    res.status(400).json(err);
+  });
+});
+//  router.put("/api/workouts:id", ({ body }, res) => {
+//    Workouts.update(body)
+//    .then(dbWorkouts => {
+//      res.json(dbWorkouts);
+//    })
+//    .catch(err => {
+//      res.status(400).json(err);
+//    });
+//  });
+//  router.get("/api/workouts/rage", (req,res) => {
+//    Workouts.find({}) 
+//    .then(dbWorkouts => {
+//      console.log(dbWorkouts)
+//      res.json(dbWorkouts);
+//    })
+//    .catch(err => {
+//      res.status(400).json(err);
+//    });
+//  });
 
  router.get("/api/stats", (req,res) => {
   Workouts.find({})
