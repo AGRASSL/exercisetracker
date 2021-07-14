@@ -18,28 +18,28 @@ router.get("/api/workouts", (req,res) => {
    });
 });
 
-app.put("/api/workouts", ({ params }, res) => {
-  db.workouts.update(
-    {
-      _id: mongojs.ObjectId(params.id)
-    },
-    {
-      $set: {
-        read: true
-      }
-    },
+// app.put("/api/workouts", ({ params }, res) => {
+//   db.workouts.update(
+//     {
+//       _id: mongojs.ObjectId(params.id)
+//     },
+//     {
+//       $set: {
+//         read: true
+//       }
+//     },
 
-    (error, edited) => {
-      if (error) {
-        console.log(error);
-        res.send(error);
-      } else {
-        console.log(edited);
-        res.send(edited);
-      }
-    }
-  );
-});
+//     (error, edited) => {
+//       if (error) {
+//         console.log(error);
+//         res.send(error);
+//       } else {
+//         console.log(edited);
+//         res.send(edited);
+//       }
+//     }
+//   );
+// });
 
 router.post("/api/workouts", ({ body }, res) => {
    Workouts.create(body)
