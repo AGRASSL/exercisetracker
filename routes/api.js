@@ -18,28 +18,6 @@ router.get("/api/workouts", (req,res) => {
    });
 });
 
-// app.put("/api/workouts", ({ params }, res) => {
-//   db.workouts.update(
-//     {
-//       _id: mongojs.ObjectId(params.id)
-//     },
-//     {
-//       $set: {
-//         read: true
-//       }
-//     },
-
-//     (error, edited) => {
-//       if (error) {
-//         console.log(error);
-//         res.send(error);
-//       } else {
-//         console.log(edited);
-//         res.send(edited);
-//       }
-//     }
-//   );
-// });
 
 router.post("/api/workouts", ({ body }, res) => {
    Workouts.create(body)
@@ -49,6 +27,16 @@ router.post("/api/workouts", ({ body }, res) => {
      .catch(err => {
        res.status(400).json(err);
      });
+ });
+
+ router.put("/api/workouts:id", ({ body }, res) => {
+   Workouts.update(body)
+   .then(dbWorkouts => {
+     res.json(dbWorkouts);
+   })
+   .catch(err => {
+     res.status(400).json(err);
+   });
  });
 
  router.get("/api/stats", (req,res) => {
