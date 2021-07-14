@@ -1,4 +1,4 @@
-# exercisetracker
+# Exercise Tracker
 
 
 
